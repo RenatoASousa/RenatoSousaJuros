@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+    api-taxa:
+        image: renatosousa/renatosousa-api-taxa:latest
+        container_name: renatosousa-api-taxa
+        build: 
+            context: ../src
+            dockerfile: ./Taxa/RS.Taxa.API/Dockerfile      
+        ports:
+            - "5002:5002"
+        environment: 
+            - ASPNETCORE_ENVIRONMENT=Staging
+            - ASPNETCORE_URLS=http://*:5002
+
+
+    api-calculo:
+        image: renatosousa/renatosousa-api-calculo:latest
+        container_name: renatosousa-api-calculo
+        build: 
+            context: ../src
+            dockerfile: ./Calculo/RS.Calculo.API/Dockerfile      
+        ports:
+            - "80:80"
+        environment: 
+            - ASPNETCORE_ENVIRONMENT=Staging
+            - ASPNETCORE_URLS=http://*:5102
+
+    
+    
